@@ -1,0 +1,14 @@
+2Layers model:
+
+class myModel(nn.Module):
+    def __init__(self):
+        super(myModel, self).__init__()
+        self.dense1 = nn.Linear(32, 64)
+        self.relu1 = nn.ReLU()
+        self.dense2 = nn.Linear(64, 1)
+    def forward(self, x):
+        x = self.dense1(x)
+        x = self.relu1(x)
+        x = self.dense2(x)
+        x = sigmoid(x)
+        return x
