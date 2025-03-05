@@ -1,1 +1,1 @@
-# NN 4 polarizedVBS
+# NN for polarizedVBS
