@@ -1,1 +1,1 @@
-# MLfor polarizedVBS
+# ML for polarizedVBS
