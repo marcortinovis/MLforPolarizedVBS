@@ -1,0 +1,8 @@
+Every model is described by the filename.
+- Dropout means that we implemented dropout in the hidden layers
+- LeakyReLU means that instead of ReLU we used LeakyReLU
+- nonvbs means that we excluded data from nvbs jets
+- Big means that we expanded the dimension of the layer(s) wrt the std model of that depth
+- EarlyStopping means we implemented early stopping; in the case of EarlyStopping_4Layers it is implemented but does not intervene
+- long means large number of epochs
+- MaxEarlyStopping means that instead of basing ES on val_loss (min mode), we base it on val_acc (max mode)
