@@ -1,5 +1,0 @@
-    n_layers: 3
-    n_units_l0: 75
-    n_units_l1: 74
-    n_units_l2: 76
-    lr: 0.0029604204245433567
