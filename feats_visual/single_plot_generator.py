@@ -8,26 +8,26 @@ def main():
 
     # scalednorm feats data
 
-    lep_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/lep_data_tt.npy'))
-    vbsjet_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/vbsjet_data_tt.npy'))
-    nvbsjet_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/nvbsjet_data_tt.npy'))
-    jj_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/jj_data_tt.npy'))
-    met_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/met_data_tt.npy'))
-    nu_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/nu_data_tt.npy'))
+    lep_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/lep_data_tt.npy'))
+    vbsjet_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/vbsjet_data_tt.npy'))
+    nvbsjet_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/nvbsjet_data_tt.npy'))
+    jj_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/jj_data_tt.npy'))
+    met_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/met_data_tt.npy'))
+    nu_data_tt = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TT/scalednorm/nu_data_tt.npy'))
 
-    lep_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/lep_data_tl.npy'))
-    vbsjet_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/vbsjet_data_tl.npy'))
-    nvbsjet_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/nvbsjet_data_tl.npy'))
-    jj_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/jj_data_tl.npy'))
-    met_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/met_data_tl.npy'))
-    nu_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/nu_data_tl.npy'))
+    lep_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/lep_data_tl.npy'))
+    vbsjet_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/vbsjet_data_tl.npy'))
+    nvbsjet_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/nvbsjet_data_tl.npy'))
+    jj_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/jj_data_tl.npy'))
+    met_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/met_data_tl.npy'))
+    nu_data_tl = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/TL/scalednorm/nu_data_tl.npy'))
 
-    lep_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/lep_data_ll.npy'))
-    vbsjet_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/vbsjet_data_ll.npy'))
-    nvbsjet_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/nvbsjet_data_ll.npy'))
-    jj_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/jj_data_ll.npy'))
-    met_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/met_data_ll.npy'))
-    nu_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/nu_data_ll.npy'))
+    lep_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/lep_data_ll.npy'))
+    vbsjet_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/vbsjet_data_ll.npy'))
+    nvbsjet_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/nvbsjet_data_ll.npy'))
+    jj_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/jj_data_ll.npy'))
+    met_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/met_data_ll.npy'))
+    nu_data_ll = np.load(os.path.join(script_dir, '../processed_ntuples/vanilla/LL/scalednorm/nu_data_ll.npy'))
 
     lep_dic_tt = {'lepPt1': lep_data_tt.T[0,0], 'lepPt2': lep_data_tt.T[0,1], 'lepEta1': lep_data_tt.T[1,0], 'lepEta2': lep_data_tt.T[1,1], 'lepPhi1': lep_data_tt.T[2,0], 'lepPhi2': lep_data_tt.T[2,1]}
     vbsjet_dic_tt = {'vbsjetPt1': vbsjet_data_tt.T[0,0], 'vbsjetPt2': vbsjet_data_tt.T[0,1], 'vbsjetEta1': vbsjet_data_tt.T[1,0], 'vbsjetEta2': vbsjet_data_tt.T[1,1], 'vbsjetPhi1': vbsjet_data_tt.T[2,0], 'vbsjetPhi2': vbsjet_data_tt.T[2,1], 'vbsjetM1': vbsjet_data_tt.T[3,0], 'vbsjetM2': vbsjet_data_tt.T[3,1]}
@@ -64,11 +64,13 @@ def main():
     plt.ioff()
 
     for feature in data_features:
-        fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(1.2*6.4, 1.4*4.8), gridspec_kw={'height_ratios': [3, 1]}, sharex='col')
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex='col') # figsize=(1.2*6.4, 1.4*4.8)
         bins_ll, edges_ll, hist_ll = ax[0].hist([x for x in df_ll[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         bins_tl, edges_tl, hist_tl = ax[0].hist([x for x in df_tl[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         bins_tt, edges_tt, hist_tt = ax[0].hist([x for x in df_tt[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         ax[0].tick_params(labelbottom=True)
+        ax[0].set_ylabel('Normalized counts')
+        ax[0].tick_params(labelbottom=False, bottom=False)
         edges_tl = [0.5*(e1+e2) for e1, e2 in zip(edges_tl[:-1], edges_tl[1:])]
         edges_tt = [0.5*(e1+e2) for e1, e2 in zip(edges_ll[:-1], edges_ll[1:])]
         pulls_tl = [(a-b)/(b+1.e-34) for a, b in zip(bins_ll, bins_tl)]
@@ -78,14 +80,17 @@ def main():
         xmin, xmax = ax[1].get_xlim()
         ax[1].hlines(0., xmin, xmax, color='k', alpha=0.5)
         ax[1].set_xlim(xmin, xmax)
+        ax[1].set_ylabel('Residues')
+        ax[1].set_xlabel(feature)
         ax[1].set_ylim(-2.5, 2.5)
         if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 1.25:
             if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 0.75:
                 ax[1].set_ylim(-0.75, 0.75)
             else:
                 ax[1].set_ylim(-1.25, 1.25)
-        fig.suptitle(f'{feature}\nscalednorm histograms')
-        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,1.))
+        fig.subplots_adjust(hspace=0.05)
+        fig.suptitle(f'Scaled and normalized {feature} histogram')
+        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,0.88))
         plt.savefig(os.path.join(script_dir, f'scalednorm/{feature}.png'), dpi=300.)
         print(f'scalednorm/{feature} done')
 
@@ -148,11 +153,13 @@ def main():
     plt.ioff()
 
     for feature in data_features:
-        fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(1.2*6.4, 1.4*4.8), gridspec_kw={'height_ratios': [3, 1]}, sharex='col')
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex='col') # figsize=(1.2*6.4, 1.4*4.8)
         bins_ll, edges_ll, hist_ll = ax[0].hist([x for x in df_ll[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         bins_tl, edges_tl, hist_tl = ax[0].hist([x for x in df_tl[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         bins_tt, edges_tt, hist_tt = ax[0].hist([x for x in df_tt[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         ax[0].tick_params(labelbottom=True)
+        ax[0].set_ylabel('Normalized counts')
+        ax[0].tick_params(labelbottom=False, bottom=False)
         edges_tl = [0.5*(e1+e2) for e1, e2 in zip(edges_tl[:-1], edges_tl[1:])]
         edges_tt = [0.5*(e1+e2) for e1, e2 in zip(edges_ll[:-1], edges_ll[1:])]
         pulls_tl = [(a-b)/(b+1.e-34) for a, b in zip(bins_ll, bins_tl)]
@@ -162,14 +169,17 @@ def main():
         xmin, xmax = ax[1].get_xlim()
         ax[1].hlines(0., xmin, xmax, color='k', alpha=0.5)
         ax[1].set_xlim(xmin, xmax)
+        ax[1].set_ylabel('Residues')
+        ax[1].set_xlabel(feature)
         ax[1].set_ylim(-2.5, 2.5)
         if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 1.25:
             if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 0.75:
                 ax[1].set_ylim(-0.75, 0.75)
             else:
                 ax[1].set_ylim(-1.25, 1.25)
-        fig.suptitle(f'{feature}\nsource histograms')
-        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,1.))
+        fig.subplots_adjust(hspace=0.05)
+        fig.suptitle(f'Source {feature} histogram')
+        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,0.88))
         plt.savefig(os.path.join(script_dir, f'source/source_{feature}.png'))
         print(f'source/{feature} done')
 
@@ -202,11 +212,13 @@ def main():
     newvar_features = ['costheta_1', 'costheta_2', 'cos_cs', 'cos_th_1', 'cos_th_2', 'r_pt']
 
     for feature in newvar_features:
-        fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(1.2*6.4, 1.4*4.8), gridspec_kw={'height_ratios': [3, 1]}, sharex='col')
-        bins_ll, edges_ll, hist_ll = ax[0].hist(df_ll[feature].to_numpy(), bins=50, density=True, histtype='step')
-        bins_tl, edges_tl, hist_tl = ax[0].hist(df_tl[feature].to_numpy(), bins=50, density=True, histtype='step')
-        bins_tt, edges_tt, hist_tt = ax[0].hist(df_tt[feature].to_numpy(), bins=50, density=True, histtype='step')
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex='col') # figsize=(1.2*6.4, 1.4*4.8)
+        bins_ll, edges_ll, hist_ll = ax[0].hist([x for x in df_ll[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
+        bins_tl, edges_tl, hist_tl = ax[0].hist([x for x in df_tl[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
+        bins_tt, edges_tt, hist_tt = ax[0].hist([x for x in df_tt[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         ax[0].tick_params(labelbottom=True)
+        ax[0].set_ylabel('Normalized counts')
+        ax[0].tick_params(labelbottom=False, bottom=False)
         edges_tl = [0.5*(e1+e2) for e1, e2 in zip(edges_tl[:-1], edges_tl[1:])]
         edges_tt = [0.5*(e1+e2) for e1, e2 in zip(edges_ll[:-1], edges_ll[1:])]
         pulls_tl = [(a-b)/(b+1.e-34) for a, b in zip(bins_ll, bins_tl)]
@@ -216,14 +228,17 @@ def main():
         xmin, xmax = ax[1].get_xlim()
         ax[1].hlines(0., xmin, xmax, color='k', alpha=0.5)
         ax[1].set_xlim(xmin, xmax)
+        ax[1].set_ylabel('Residues')
+        ax[1].set_xlabel(feature)
         ax[1].set_ylim(-2.5, 2.5)
         if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 1.25:
             if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 0.75:
                 ax[1].set_ylim(-0.75, 0.75)
             else:
                 ax[1].set_ylim(-1.25, 1.25)
-        fig.suptitle(f'{feature}\nscalednorm histograms')
-        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,1.))
+        fig.subplots_adjust(hspace=0.05)
+        fig.suptitle(f'Scaled and normalized {feature} histogram')
+        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,0.88))
         plt.savefig(os.path.join(script_dir, f'scalednorm/{feature}.png'))
         print(f'scalednorm/{feature} done')
 
@@ -256,11 +271,13 @@ def main():
     newvar_features = ['costheta_1', 'costheta_2', 'cos_cs', 'cos_th_1', 'cos_th_2', 'r_pt']
 
     for feature in newvar_features:
-        fig, ax = plt.subplots(ncols=1, nrows=2, figsize=(1.2*6.4, 1.4*4.8), gridspec_kw={'height_ratios': [3, 1]}, sharex='col')
-        bins_ll, edges_ll, hist_ll = ax[0].hist(df_ll[feature].to_numpy(), bins=50, density=True, histtype='step')
-        bins_tl, edges_tl, hist_tl = ax[0].hist(df_tl[feature].to_numpy(), bins=50, density=True, histtype='step')
-        bins_tt, edges_tt, hist_tt = ax[0].hist(df_tt[feature].to_numpy(), bins=50, density=True, histtype='step')
+        fig, ax = plt.subplots(ncols=1, nrows=2, gridspec_kw={'height_ratios': [3, 1]}, sharex='col') # figsize=(1.2*6.4, 1.4*4.8)
+        bins_ll, edges_ll, hist_ll = ax[0].hist([x for x in df_ll[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
+        bins_tl, edges_tl, hist_tl = ax[0].hist([x for x in df_tl[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
+        bins_tt, edges_tt, hist_tt = ax[0].hist([x for x in df_tt[feature].to_numpy() if x != 0.], bins=50, density=True, histtype='step')
         ax[0].tick_params(labelbottom=True)
+        ax[0].set_ylabel('Normalized counts')
+        ax[0].tick_params(labelbottom=False, bottom=False)
         edges_tl = [0.5*(e1+e2) for e1, e2 in zip(edges_tl[:-1], edges_tl[1:])]
         edges_tt = [0.5*(e1+e2) for e1, e2 in zip(edges_ll[:-1], edges_ll[1:])]
         pulls_tl = [(a-b)/(b+1.e-34) for a, b in zip(bins_ll, bins_tl)]
@@ -270,14 +287,17 @@ def main():
         xmin, xmax = ax[1].get_xlim()
         ax[1].hlines(0., xmin, xmax, color='k', alpha=0.5)
         ax[1].set_xlim(xmin, xmax)
+        ax[1].set_ylabel('Residues')
+        ax[1].set_xlabel(feature)
         ax[1].set_ylim(-2.5, 2.5)
         if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 1.25:
             if max(np.concatenate((np.abs(pulls_tl), np.abs(pulls_tt)))) < 0.75:
                 ax[1].set_ylim(-0.75, 0.75)
             else:
                 ax[1].set_ylim(-1.25, 1.25)
-        fig.suptitle(f'{feature}\nsource histograms')
-        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,1.))
+        fig.subplots_adjust(hspace=0.05)
+        fig.suptitle(f'Source {feature} histogram')
+        fig.legend([hist_ll[0], hist_tl[0], hist_tt[0]], ['LL', 'TL', 'TT'], loc="upper right", bbox_to_anchor=(0.9,0.88))
         plt.savefig(os.path.join(script_dir, f'source/source_{feature}.png'))
         print(f'source/{feature} done')
 
