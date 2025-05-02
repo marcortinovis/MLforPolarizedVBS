@@ -70,11 +70,12 @@ class EarlyStopping:
         return False
 
 def data_loading(opt):
-    options_dict = {'nn': '../processed_ntuples/transverse_helicity/chunk_nonu_data.npy',
-                    'ny': '../processed_ntuples/transverse_helicity/chunk_wnu_data.npy',
+    options_dict = {'nn': '../processed_ntuples/chunking/chunk_nonu_data.npy',
+                    'ny': '../processed_ntuples/chunking/chunk_wnu_data.npy',
                     'yn': '../processed_ntuples/chunking/chunk_nonu_data.npy',
                     'yy': '../processed_ntuples/chunking/chunk_wnu_data.npy'}
     data = np.load(options_dict[opt])
+    if opt == 'nn' or opt == 'ny': data = np.concatenate((data[:,0:-2], data[:,-1].reshape(-1,1)), axis=1)
     train, val = train_test_split(data, random_state=137)
     # copy in dedicated arrays
     flags_train = train[:, -1]

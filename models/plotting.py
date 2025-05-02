@@ -8,6 +8,8 @@ import torch.nn as nn
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_curve, roc_auc_score
 
+from scipy.stats import ks_2samp
+
 
 # creation of the model class
 # (don't know if the sigmoid is defined in the best way possibile; this one just works)
@@ -67,8 +69,12 @@ class EarlyStopping:
         return False
 
 def flags_loading(opt):
-    options_dict = {'nn': '../processed_ntuples/transverse_helicity/chunk_nonu_data.npy', 'ny': '../processed_ntuples/transverse_helicity/chunk_wnu_data.npy', 'yn': '../processed_ntuples/chunking/chunk_nonu_data.npy', 'yy': '../processed_ntuples/chunking/chunk_wnu_data.npy'}
+    options_dict = {'nn': '../processed_ntuples/chunking/chunk_nonu_data.npy',
+                    'ny': '../processed_ntuples/chunking/chunk_wnu_data.npy',
+                    'yn': '../processed_ntuples/chunking/chunk_nonu_data.npy',
+                    'yy': '../processed_ntuples/chunking/chunk_wnu_data.npy'}
     data = np.load(options_dict[opt])
+    if opt == 'nn' or 'ny': data = np.concatenate((data[:,0:-2], data[:,-1].reshape(-1,1)), axis=1)
     train, val = train_test_split(data, random_state=137)
     # copy in dedicated arrays
     flags_train = train[:, -1]
@@ -81,20 +87,24 @@ def plotting(feats_option, n_epochs, batch_size, learning_rate, accuracies, val_
     plt.figure()
     plt.plot(list(range(n_epochs)), accuracies, label='train')
     plt.plot(list(range(n_epochs)), val_accuracies, label='val')
-    plt.title(f'Accuracy when training with {n_epochs} epochs,\nbatch size {batch_size} and learning rate = {learning_rate}')
+    plt.title(f'Accuracy\nTraining with {n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate:.0e}')
     plt.grid(alpha=0.5)
-    plt.legend()
-    plt.savefig(f'figures/'+label_dict[feats_option]+'-acc.png')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.legend(fontsize=12)
+    plt.savefig(f'figures/'+label_dict[feats_option]+'-acc.png', dpi=500, bbox_inches='tight')
     plt.close()
     print('Accuracy plot saved')
     # losses
     plt.figure()
     plt.plot(list(range(n_epochs)), losses, label='train')
     plt.plot(list(range(n_epochs)), val_losses, label='val')
-    plt.title(f'Loss when training with {n_epochs} epochs,\nbatch size {batch_size} and learning rate = {learning_rate}')
+    plt.title(f'Loss\nTraining with {n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate:.0e}')
     plt.grid(alpha=0.5)
-    plt.legend()
-    plt.savefig(f'figures/'+label_dict[feats_option]+'-loss.png')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend(fontsize=12)
+    plt.savefig(f'figures/'+label_dict[feats_option]+'-loss.png', dpi=500, bbox_inches='tight')
     plt.close()
     print('Loss plot saved')
     # roc
@@ -102,36 +112,43 @@ def plotting(feats_option, n_epochs, batch_size, learning_rate, accuracies, val_
     fpr, tpr, _ = roc_curve(flags_val, val_outputs)
     auc = roc_auc_score(flags_val, val_outputs)
     plt.plot(fpr, tpr, label=f'AUC {auc:.3f}')
-    plt.title(f'ROC curve when training with {n_epochs} epochs,\nbatch size {batch_size} and learning rate = {learning_rate}')
+    plt.title(f'ROC curve\nTraining with {n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate:.0e}')
     plt.grid(alpha=0.5)
-    plt.legend()
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.legend(fontsize=14)
     plt.axis('square')
-    plt.savefig(f'figures/'+label_dict[feats_option]+'-ROC.png')
+    plt.savefig(f'figures/'+label_dict[feats_option]+'-ROC.png', dpi=500, bbox_inches='tight')
     plt.close()
     print('ROC plot saved')
-    # output
+    # output val
     plt.figure()
-    sig = val_outputs[flags_val.T.astype(bool)]
-    bkg = val_outputs[~flags_val.T.astype(bool)]
-    plt.hist(sig, bins=50, density=True, alpha=0.7, label='sig')
-    plt.hist(bkg, bins=50, density=True, alpha=0.7, label='bkg')
-    plt.title(f'Output signal/background when training with\n{n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate}')
-    plt.legend()
-    plt.savefig(f'figures/'+label_dict[feats_option]+'-output.png')
+    sig_val = val_outputs[flags_val.T.astype(bool)]
+    bkg_val = val_outputs[~flags_val.T.astype(bool)]
+    plt.hist(sig_val, bins=50, density=True, alpha=0.7, label='sig')
+    plt.hist(bkg_val, bins=50, density=True, alpha=0.7, label='bkg')
+    plt.title(f'Output of the model, validation data\nTraining with {n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate:.0e}')
+    plt.xlabel('Output')
+    plt.ylabel('Normalized counts')
+    plt.legend(fontsize=12)
+    plt.savefig(f'figures/'+label_dict[feats_option]+'-output_val.png', dpi=500, bbox_inches='tight')
     plt.close()
     print('Output plot saved')
-    # output training
+    # output val+train
     plt.figure()
     sig_tr = train_outputs[flags_train.T.astype(bool)]
     bkg_tr = train_outputs[~flags_train.T.astype(bool)]
-    plt.hist(sig_tr, bins=100, density=True,  alpha=0.7, label='sig_tr')
-    plt.hist(bkg_tr, bins=100, density=True, alpha=0.7, label='bkg_tr')
-    plt.hist(sig, bins=100, density=True, histtype='step', color='k', label='sig_val')
-    plt.hist(bkg, bins=100, density=True, histtype='step', color='red', label='bkg_val')
-    plt.title(f'Output signal/background when training with\n{n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate}')
+    plt.hist(sig_tr, bins=50, density=True,  alpha=0.7, label='sig_tr')
+    plt.hist(bkg_tr, bins=50, density=True, alpha=0.7, label='bkg_tr')
+    plt.hist(sig_val, bins=50, density=True, histtype='step', color='k', label='sig_val')
+    plt.hist(bkg_val, bins=50, density=True, histtype='step', color='red', label='bkg_val')
+    plt.title(f'Output of the model, both for validation and for training data\nKS p-values: signal {ks_2samp(sig_tr.reshape(1,-1).squeeze(), sig_val.reshape(1,-1).squeeze())[1]:.2f}, '
+              +f'background {ks_2samp(bkg_tr.reshape(1,-1).squeeze(), bkg_val.reshape(1,-1).squeeze())[1]:.2f}\nTraining with {n_epochs} epochs, batch size {batch_size} and learning rate = {learning_rate:.0e}')
     plt.yscale('log')
-    plt.legend()
-    plt.savefig(f'figures/'+label_dict[feats_option]+'-output_full.png')
+    plt.xlabel('Output')
+    plt.ylabel('Normalized counts (log-scale)')
+    plt.legend(fontsize=12)
+    plt.savefig(f'figures/'+label_dict[feats_option]+'-output_trainval.png', dpi=500, bbox_inches='tight')
     plt.close()
     print('Output full plot saved')
 
